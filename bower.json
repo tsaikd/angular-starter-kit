@@ -1,0 +1,8 @@
+{
+  "name": "angular-starter-kit",
+  "dependencies": {
+    "angular": "^1.3",
+    "angular-ui-router": "^0.2.13"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html ng-app="angular-starter-kit">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>angular-starter-kit</title>
+
+		<!-- build:css public/index.min.css -->
+		<link rel="stylesheet" href="src/route/index.css">
+		<!-- endbuild -->
+	</head>
+	<body>
+		<div ui-view></div>
+
+		<!-- build:js public/index.min.js -->
+		<script src="lib/angular/angular.js"></script>
+		<script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
+
+		<script src="src/config/app.js"></script>
+		<script src="src/config/route.js"></script>
+		<script src="src/directive/version.js"></script>
+		<script src="src/route/index.js"></script>
+		<script src="src/service/version.js"></script>
+
+		<!--
+		<script src="src/angular-template.tmp.js"></script>
+		-->
+		<!-- endbuild -->
+	</body>
+</html>
