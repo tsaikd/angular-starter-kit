@@ -131,13 +131,17 @@ gulp.task("bower.json", function(done) {
 });
 
 gulp.task("watch", function() {
-	["tmpl", "css", "js"].forEach(function(i) {
-		gulp.watch(paths[i], [i]);
-	});
-	pages.forEach(function(page) {
-		var name = page + ".src.html";
-		gulp.watch(paths[name], [name]);
-	});
+	["tmpl", "css", "js"]
+		.concat(pages.map(function(page) { return page + ".src.html"; }))
+		.forEach(function(i) {
+			gulp.watch(paths[i], function(i) {
+				return function() {
+					gulp.src(paths[i])
+						.pipe(connect.reload());
+				};
+			}(i));
+		});
+
 	connect.server({
 		root: root,
 		port: 9000,
