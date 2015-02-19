@@ -61,6 +61,8 @@ gulp.task("default", sync.sync([
 	["watch"]
 ]));
 
+gulp.task("dev", ["watch"]);
+
 gulp.task("css", function(done) {
 	gulp.src(paths.css)
 		.pipe(connect.reload())

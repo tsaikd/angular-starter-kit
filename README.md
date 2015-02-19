@@ -61,7 +61,7 @@ gulp build
 ### How to Develop with livereload
 
 ```shell
-gulp watch
+gulp dev
 ```
 
 * Open browser to http://localhost:9000/index.src.html if in development
