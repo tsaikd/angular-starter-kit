@@ -126,3 +126,11 @@ touch page2.src.html
 ```
 
 * Rebuild with gulp
+
+### How to Update npm and bower packages
+
+* **WARNING** git commit before updating
+
+```shell
+gulp up
+```

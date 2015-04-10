@@ -9,6 +9,7 @@ var gulp = require("gulp"),
 	minifyCss = require("gulp-minify-css"),
 	minifyHtml = require("gulp-minify-html"),
 	replace = require("gulp-replace"),
+	run = require("gulp-run"),
 	connect = require("gulp-connect");
 
 var pkg = require("./package.json"),
@@ -62,6 +63,8 @@ gulp.task("default", sync.sync([
 ]));
 
 gulp.task("dev", ["watch"]);
+
+gulp.task("up", ["update-npm", "update-bower"]);
 
 gulp.task("css", function(done) {
 	gulp.src(paths.css)
@@ -130,6 +133,23 @@ gulp.task("bower.json", function(done) {
 		.pipe(replace(/"name": "[^"]*"/, "\"name\": \"" + pkg.name + "\""))
 		.pipe(gulp.dest("./"))
 		.on("end", done);
+});
+
+gulp.task("update-npm", function(done) {
+	var cmd = "sh -c './node_modules/npm-check-updates/bin/npm-check-updates -u'";
+	run(cmd).exec().on("end", done);
+});
+
+gulp.task("update-bower", function(done) {
+	var bowerjson = require("./bower.json");
+	var deps = [];
+	var i, cmd;
+
+	for (i in bowerjson.dependencies) {
+		deps.push(i);
+	}
+	cmd = "bower install --save --force-latest " + deps.join(" ");
+	run(cmd).exec().on("end", done);
 });
 
 gulp.task("watch", function() {
